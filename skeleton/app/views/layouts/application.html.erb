@@ -9,6 +9,15 @@
   </head>
 
   <body>
+  
+    <% if logged_in? %>
+      <h1><%= @current_user.username %> </h1>
+      <form action="<%=session_url%>" method="POST">
+        
+      </form>
+
+    <% else %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

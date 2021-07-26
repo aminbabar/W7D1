@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    helper_method :destroy
     def new 
         @user = User.new 
         render :new
@@ -16,5 +17,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        @current_user.reset_session_token! if logged_in
+        session[:session_token] = nil
+        @current_user = nil
     end
 end
