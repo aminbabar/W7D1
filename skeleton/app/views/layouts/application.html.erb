@@ -13,11 +13,16 @@
     <% if logged_in? %>
       <h1><%= @current_user.username %> </h1>
       <form action="<%=session_url%>" method="POST">
-        
+        <input name="_method" type="hidden" value="delete">
+        <input type="sumbit" value="logout">
       </form>
 
     <% else %>
+      <a href="<%= new_user_url%>">Signup</a>
+      <a href="<%= new_session_url%>">Signin </a>
     <% end %>
     <%= yield %>
   </body>
 </html>
+
+<!-- input login button -->
